@@ -1,1 +1,878 @@
-hello world
+
+<!DOCTYPE html>
+<html
+  lang="en "
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TinySnap: A Production-Ready Screenshot Extension Tool for Everyone</title>
+  <meta name="description" content="TinySnap is a production-ready screenshot extension tool created for everyone, especially creators, developers, and marketers.">
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdn.paddle.com">
+  <link rel="dns-prefetch" href="https://buy.paddle.com">
+  <link rel="dns-prefetch" href="https://global.localizecdn.com">
+
+  <meta property="og:title" content="TinySnap: A Production-Ready Screenshot Extension Tool for Everyone">
+  <meta property="og:url" content="https://tinysnap.app/">
+  <meta property="og:image" content="https://tinysnap.b-cdn.net/site/og.png">
+  <meta property="og:description" content="TinySnap is a production-ready screenshot extension tool created for everyone, especially creators, developers, and marketers.">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="TinySnap: A Production-Ready Screenshot Extension Tool for Everyone">
+  <meta name="twitter:image" content="https://tinysnap.b-cdn.net/site/og.png">
+  <meta property="twitter:description" content="TinySnap is a production-ready screenshot extension tool created for everyone, especially creators, developers, and marketers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="/assets/app.b520ee8d.css" />
+
+  <link rel="preconnect" href="https://cdn.paddle.com">
+  <link rel="preconnect" href="https://buy.paddle.com">
+  <script src="https://cdn.paddle.com/paddle/paddle.js"></script><script src="/assets/app.5c6a875b.js" defer></script>
+</head>
+
+<body class="font-sans bg-white dark:bg-slate-900 text-gray-400 leading-normal antialiased">
+
+  
+
+<nav class="bg-white dark:bg-slate-900 py-4 md:py-10" x-data="{ openMainMenu: false, openUserMenu: false }">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between z-40">
+      <div class="flex items-center md:gap-x-12">
+          <a href="https://tinysnap.app">
+            <img class="sm:h-12 h-8 w-auto hidden dark:inline-block" src="https://tinysnap.b-cdn.net/site/ts-logo-light.png" alt="TinySnap Logo">
+            <img class="sm:h-12 h-8 w-auto inline-block dark:hidden" src="https://tinysnap.b-cdn.net/site/ts-logo.png" alt="TinySnap Logo">
+          </a>
+
+          <div class="hidden md:flex md:gap-x-6">
+            <a href="https://tinysnap.app/#howitworks" class="anchor-link inline-block rounded-lg py-1 px-2 text-lg text-slate-900 dark:text-slate-50 hover:bg-slate-200 hover:text-slate-900 dark:hover:text-slate-700">
+              How it works
+            </a>
+            
+            <a href="https://tinysnap.app/#pricing" class="anchor-link inline-block rounded-lg py-1 px-2 text-lg text-slate-900 dark:text-slate-50 hover:bg-slate-200 hover:text-slate-900 dark:hover:text-slate-700">
+              Pricing
+            </a>
+            <a href="https://tinysnap.app/#faq" class="anchor-link inline-block rounded-lg py-1 px-2 text-lg text-slate-900 dark:text-slate-50 hover:bg-slate-200 hover:text-slate-900 dark:hover:text-slate-700">
+              FAQ
+            </a>
+          </div>
+
+      </div>
+
+      <div class="flex items-center gap-x-5 md:gap-x-8">
+        <div class="dropdown-item relative inline-block text-left" x-data="{ open: false }" @click.outside="open = false">
+          <a href="#" @click.prevent="open = !open" :class="{ opened: open }">
+            <span class="inline-flex justify-center w-full rounded-md border border-slate-200 dark:border-slate-700 shadow-sm px-4 py-2 bg-white dark:bg-slate-900 text-sm font-medium text-slate-700 dark:text-slate-50 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+              🇺🇸 English
+              <svg class="h-5 w-5 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+
+          <ul class="dropdown origin-top-right absolute right-0 mt-2 w-36 rounded-md border border-slate-300 dark:border-slate-700 shadow-lg bg-white dark:bg-slate-900 ring-1 ring-black ring-opacity-5 focus:outline-none z-50" x-show="open">
+
+                <li><a class="text-slate-700 dark:text-slate-50 block px-4 py-2 text-sm hover:bg-slate-200 dark:hover:bg-slate-800" href="https://tinysnap.app/de-de/">🇩🇪 Deutsch</a></li>
+
+
+                <li><a class="text-slate-700 dark:text-slate-50 block px-4 py-2 text-sm hover:bg-slate-200 dark:hover:bg-slate-800" href="https://tinysnap.app/fr-fr/">🇫🇷 Français</a></li>
+
+                <li><a class="text-slate-700 dark:text-slate-50 block px-4 py-2 text-sm hover:bg-slate-200 dark:hover:bg-slate-800" href="https://tinysnap.app/pt-pt/">🇵🇹 Português</a></li>
+
+                <li><a class="text-slate-700 dark:text-slate-50 block px-4 py-2 text-sm hover:bg-slate-200 dark:hover:bg-slate-800" href="https://tinysnap.app/zh-cn/">🇨🇳 简体中文</a></li>
+
+                <li><a class="text-slate-700 dark:text-slate-50 block px-4 py-2 text-sm hover:bg-slate-200 dark:hover:bg-slate-800" href="https://tinysnap.app/zh-tw/">🇨🇳 繁體中文</a></li>
+          </ul>
+        </div>
+
+
+        <div class="relative flex items-center dark:border-slate-800">
+          <label class="sr-only" id="headlessui-listbox-label-2">Theme</label>
+          <button type="button" id="headlessui-listbox-button-3" aria-haspopup="true" aria-expanded="false" aria-labelledby="headlessui-listbox-label-2" @click="darkMode = !darkMode">
+            <span class="dark:hidden">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="stroke-slate-700 dark:stroke-slate-500"></path>
+                <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"></path>
+              </svg>
+            </span>
+            <span class="hidden dark:inline">
+              <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z" class="fill-transparent"></path>
+                <path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" class="fill-slate-400 dark:fill-slate-500"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" class="fill-slate-200 dark:fill-slate-500"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+
+        <a href="/login" class="group hidden sm:inline-flex items-center justify-center rounded-md py-2 px-4 text-sm  focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600">
+          Log in
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-1 sm:hidden">
+
+        <button type="button" class="inline-flex items-center justify-center text-gray-500 focus:outline-none"
+          @click="openUserMenu = false; openMainMenu = !openMainMenu">
+          <svg class="h-6 w-6" :class="{ 'hidden': openMainMenu, 'block': !openMainMenu }"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" />
+          </svg>
+
+          <svg class="h-6 w-6" :class="{ 'block': openMainMenu, 'hidden': !openMainMenu }"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="sm:hidden" x-show="openMainMenu" style="display: none">
+    <div class="px-4 py-2.5 space-y-1 text-center">
+      <a href="/#howitworks" class="anchor-link block text-gray-500 hover:text-white py-1">How it works</a>
+      <a href="/#pricing" class="anchor-link block text-gray-500 hover:text-white py-1">Testimonials</a>
+      
+      <a href="/#faq" class="anchor-link block text-gray-500 hover:text-white py-1">FAQ</a>
+
+      <a href="/login" class="block text-gray-500 hover:text-white py-1">Log in</a>
+    </div>
+  </div>
+
+</nav>
+
+
+  <main>
+<section class="heroBanner bg-white dark:bg-slate-900 overflow-hidden py-8 md:pt-16 md:pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-7xl font-medium leading-tight tracking-tight text-slate-900 dark:text-slate-50 pt-8">
+        Screenshot. <div class="text-blue-700 dark:text-blue-500 inline"> Beautified.</div>
+      </h1>
+      <div class="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
+        <div class="relative z-10 mx-auto max-w-2xl col-span-6 lg:max-w-none pr-4">
+        <p class="mt-8 text-xl text-slate-700 dark:text-slate-400 leading-normal">
+          No more boring screenshots! Select what you want, tweak the graphic, and you are good to share. It doesn&#x27;t get simpler than this.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:gap-x-6">
+          <a href="https://chrome.google.com/webstore/detail/tinysnap-production-ready/ijobkfpianooemebecnbaafnjndhbdcl" class="extension-link group inline-flex items-center justify-center rounded-lg py-3 px-6 text-base font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900">
+            <img src="https://tinysnap.b-cdn.net/site/chrome.svg" class="w-5 h-5 aspect-square mr-3" alt="Get Chrome extension, it&#x27;s free!" />
+            <span>Get Chrome extension, it&#x27;s free!</span>
+          </a>
+
+          <a class="dark:hidden" href="https://www.producthunt.com/posts/tinysnap?utm_source=badge-top-post-topic-badge&utm_medium=badge&utm_souce=badge-tinysnap" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=360969&theme=light&period=weekly&topic=Design Tools" alt="TinySnap - Production&#0045;ready&#0032;screenshots&#0032;made&#0032;simple&#0032;for&#0032;everyone | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+          <a class="hidden dark:inline-block" href="https://www.producthunt.com/posts/tinysnap?utm_source=badge-top-post-topic-badge&utm_medium=badge&utm_souce=badge-tinysnap" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=360969&theme=neutral&period=weekly&topic=Design Tools" alt="TinySnap - Production&#0045;ready&#0032;screenshots&#0032;made&#0032;simple&#0032;for&#0032;everyone | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+        </div>
+
+
+        <script>
+          ;(function () {
+            var userAgent = window.navigator.userAgent;
+            var data = {
+              edge: {
+                image: 'https://tinysnap.b-cdn.net/site/edge.svg',
+                text: "Get Edge extension, it&#x27;s free!",
+                downloadURL: 'https://microsoftedge.microsoft.com/addons/detail/tinysnap-productionread/gccfknghacgbnmfkmpjhkoeenmiekhfc'
+              },
+              firefox: {
+                image: 'https://tinysnap.b-cdn.net/site/firefox.svg',
+                text: "Get Firefox extension, it&#x27;s free!",
+                downloadURL: 'https://addons.mozilla.org/en-US/firefox/addon/tinysnap-screenshot/'
+              },
+              chrome: {
+                image: 'https://tinysnap.b-cdn.net/site/chrome.svg',
+                text: "Get Chrome extension, it&#x27;s free!",
+                downloadURL: 'https://chrome.google.com/webstore/detail/tinysnap-production-ready/ijobkfpianooemebecnbaafnjndhbdcl'
+              }
+            };
+  
+            function render(data) {
+              var link = document.querySelector('.extension-link');
+              var image = link.querySelector('img');
+              var span = link.querySelector('span');
+  
+              link.setAttribute('href', data.downloadURL);
+              image.setAttribute('src', data.image);
+              image.setAttribute('alt', data.text);
+              span.innerHTML = data.text;
+            }
+  
+            if (/Edg/.test(userAgent)) {
+              render(data.edge)
+            } else if (/Firefox/.test(userAgent)) {
+              render(data.firefox)
+            } else {
+              render(data.chrome)
+            }
+          })()
+        </script>
+        <img class="block dark:hidden mt-32" src="https://tinysnap.b-cdn.net/site/hero-sub-image.png" alt="TinySnap Annotation">
+        <img class="hidden dark:block mt-32" src="https://tinysnap.b-cdn.net/site/hero-sub-image-dark.png" alt="TinySnap Annotation">
+        </div>
+
+        <div class="relative mt-6 col-span-6 lg:row-span-2">
+          <div class="px-4">
+            <img class="hidden dark:block rounded-lg" src="https://tinysnap.b-cdn.net/site/hero-image-dark.png" alt="TinySnap">
+            <img class="block dark:hidden rounded-lg" src="https://tinysnap.b-cdn.net/site/hero-image.png" alt="TinySnap">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section id="howitworks" aria-label="See how TinySnap works" class="relative overflow-hidden py-16 md:py-32 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-8">
+        <h2
+          class="font-medium text-4xl md:text-7xl tracking-tight text-slate-900 dark:text-slate-50 mb-8"
+        >
+          Designed for you
+        </h2>
+        <p class="mt-4 text-xl tracking-tight text-slate-700 dark:text-slate-400">
+          No design skills are required, simply snag to make a screenshot, and turn it into captivating graphics.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2 pr-12 my-16 md:my-32">
+          <h3 class="text-3xl md:text-5xl text-slate-900 dark:text-slate-50 font-bold leading-tight mb-4">
+            Take a screenshot
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 mb-8 text-lg">
+            Capture your visible screen, a selected area, or even the full page with just a single click. Or upload an image from your local disk and clipboard. It takes no more than seconds.
+          </p>
+
+          <script>
+            var feature1 = function () {
+              return {
+                selected: null,
+                isHovering: false,
+                isIntersecting: false,
+                videoElement: null,
+                videoProgress: 0,
+                data: {
+                  visible_part: "https://tinysnap.b-cdn.net/site/videos/visible.mp4",
+                  selected_area: "https://tinysnap.b-cdn.net/site/videos/selected.mp4",
+                  full_page: "https://tinysnap.b-cdn.net/site/videos/full.mp4"
+                },
+
+                init() {
+                  this.selected = 'visible_part';
+                  this.videoElement = document.querySelector('.feature-video');
+                  this.videoElement.src = this.data[this.selected];
+
+                  this.videoElement.addEventListener('timeupdate', () => {
+                    var currentTime = this.videoElement.currentTime;
+                    var duration = this.videoElement.duration;
+
+                    if (Number.isFinite(currentTime) && Number.isFinite(duration) && duration > 0) {
+                      this.videoProgress = 100 * currentTime / duration
+                    } else {
+                      this.videoProgress = 0
+                    }
+                  });
+
+                  this.videoElement.addEventListener('ended', () => {
+                    if (this.isHovering) {
+                      return
+                    }
+
+                    var values = Object.keys(this.data);
+                    var index = values.indexOf(this.selected);
+
+                    if (index === values.length - 1) {
+                      index = 0;
+                    } else {
+                      index += 1;
+                    }
+
+                    this.select(values[index]);
+                  });
+
+                  var observer = new IntersectionObserver(entries => {
+                    var element = entries[0];
+                    this.isIntersecting = element.isIntersecting;
+
+                    if (element.isIntersecting) {
+                      this.startSlide()
+                    } else {
+                      this.stopSlide()
+                    }
+                  });
+
+                  observer.observe(document.querySelector('.feature1'));
+                },
+
+                startSlide() {
+                  if (this.isIntersecting) {
+                    this.videoElement.play()
+                  }
+                },
+
+                stopSlide() {
+                  this.videoElement.pause()
+                },
+
+                isSelected(value) {
+                  return value === this.selected;
+                },
+
+                classes(value) {
+                  var isSelected = this.isSelected(value);
+
+                  return {
+                    'bg-blue-700 hover:bg-blue-700 border-blue-700': isSelected,
+                    'bg-slate-800 hover:bg-slate-600 border-slate-400': !isSelected
+                  }
+                },
+
+                select(value) {
+                  this.selected = value;
+                  this.videoProgress = 0;
+                  this.videoElement.src = this.data[value];
+                  this.startSlide();
+                }
+              }
+            }
+          </script>
+
+          <div x-data="feature1()" class="feature1 grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div
+              class="relative py-8 bg-slate-800 border border-slate-400 rounded-md text-center cursor-pointer"
+              :class="classes('visible_part')"
+              @click="select('visible_part')"
+            >
+              <template x-if="isSelected('visible_part')">
+                <div class="absolute left-0 top-0 bottom-0 bg-black bg-opacity-20" :style="{ width: videoProgress + '%' }"></div>
+              </template>
+              <div class="relative text-center z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-browser w-12 h-12 mx-auto text-slate-50" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <rect x="4" y="4" width="16" height="16" rx="1"></rect>
+                  <line x1="4" y1="8" x2="20" y2="8"></line>
+                  <line x1="8" y1="4" x2="8" y2="8"></line>
+                </svg>
+                <h3 class="mt-4 text-slate-50">Visible part</h3>
+              </div>
+            </div>
+            <div
+              class="relative py-8 bg-slate-800 border border-slate-400 rounded-md text-center cursor-pointer"
+              :class="classes('selected_area')"
+              @click="select('selected_area')"
+            >
+              <template x-if="isSelected('selected_area')">
+                <div class="absolute left-0 top-0 bottom-0 bg-black bg-opacity-20" :style="{ width: videoProgress + '%' }"></div>
+              </template>
+              <div class="relative text-center z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-capture w-12 h-12 mx-auto text-slate-50" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M4 8v-2a2 2 0 0 1 2 -2h2"></path>
+                  <path d="M4 16v2a2 2 0 0 0 2 2h2"></path>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v2"></path>
+                  <path d="M16 20h2a2 2 0 0 0 2 -2v-2"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+               </svg>
+               <h3 class="mt-4 text-slate-50">Selected area</h3>
+              </div>
+            </div>
+            <div
+              class="relative py-8 bg-slate-800 border border-slate-400 rounded-md text-center cursor-pointer"
+              :class="classes('full_page')"
+              @click="select('full_page')"
+            >
+              <template x-if="isSelected('full_page')">
+                <div class="absolute left-0 top-0 bottom-0 bg-black bg-opacity-20" :style="{ width: videoProgress + '%' }"></div>
+              </template>
+              <div class="relative text-center z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-down w-12 h-12 mx-auto text-slate-50" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8"></path>
+                  <path d="M18 4v17"></path>
+                  <path d="M15 18l3 3l3 -3"></path>
+                </svg>
+                <h3 class="mt-4 text-slate-50">Full page</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full mb-6 sm:w-1/2 py-6 sm:px-6 sm:mb-0">
+          <video class="feature-video w-full h-full rounded-md" src="" preload="auto" muted controls />
+        </div>
+      </div>
+
+      <script>
+      var feature2 = function () {
+        return {
+          padding: 50,
+          maxPadding: 0,
+          inset: 20,
+          maxInset: 0,
+          background: null,
+          borderRadius: 10,
+          boxShadow: 5,
+          mockupFrame: false,
+          backgrounds: [
+            'linear-gradient(45deg, rgb(253, 239, 132), rgb(247, 198, 169), rgb(21, 186, 196))',
+            'linear-gradient(to right, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)',
+            'linear-gradient(rgb(42, 245, 152) 0%, rgb(0, 158, 253) 100%)',
+            'linear-gradient(45deg, rgb(217, 244, 255), rgb(255, 143, 167), rgb(93, 104, 255))',
+            'linear-gradient(to top, rgb(80, 204, 127) 0%, rgb(245, 209, 0) 100%)',
+            'radial-gradient(circle at 32% 106%, rgb(255, 225, 125) 0%, rgb(255, 205, 105) 10%, rgb(250, 145, 55) 28%, rgb(235, 65, 65) 42%, transparent 82%), linear-gradient(135deg, rgb(35, 75, 215) 12%, rgb(195, 60, 190) 58%)'
+          ],
+
+          init() {
+            this.background = this.backgrounds[0]
+
+            var element = document.querySelector('.feature2')
+            var rect = element.getBoundingClientRect()
+            var spacing = (rect.width - this.imageWidth) / 2
+
+            this.maxPadding = spacing * 0.6
+            this.maxInset = spacing * 0.4
+          },
+
+          setBackground(index) {
+            this.background = this.backgrounds[index]
+          },
+
+          setMockupFrame() {
+            this.mockupFrame = !this.mockupFrame
+          },
+
+          px(num) {
+            return num + 'px'
+          }
+        }
+      }
+      </script>
+
+      <div x-data="feature2()" class="flex flex-wrap flex-col-reverse sm:flex-row">
+        <div class="w-full sm:w-1/2 p-6 mt-6">
+          <div class="feature2 flex items-center justify-center w-full h-full rounded-md bg-slate-200 dark:bg-slate-800 pointer-events-none">
+            <div :style="{ padding: px(padding), background: background }">
+              <div class="overflow-hidden" :style="{ 'border-radius': px(borderRadius), 'box-shadow': 'rgba(0, 0, 0, 0.28) 0px ' + px(boxShadow/2) + ' ' + px(boxShadow) + ', rgba(0, 0, 0, 0.22) 0px 0px ' + px(boxShadow/3) }">
+                <template x-if="mockupFrame">
+                  <div class="relative flex items-center" style="height: 38px; background: rgba(255, 255, 255, 0.75); padding-left: 1rem;">
+                    <svg width="52" height="38" viewBox="0 0 52 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 38px;">
+                      <path d="M6 24.75C9.17564 24.75 11.75 22.1756 11.75 19C11.75 15.8244 9.17564 13.25 6 13.25C2.82436 13.25 0.25 15.8244 0.25 19C0.25 22.1756 2.82436 24.75 6 24.75Z" fill="#FF5F57" stroke="black" stroke-opacity="0.2" stroke-width="0.5"></path>
+                      <path d="M26 24.75C29.1756 24.75 31.75 22.1756 31.75 19C31.75 15.8244 29.1756 13.25 26 13.25C22.8244 13.25 20.25 15.8244 20.25 19C20.25 22.1756 22.8244 24.75 26 24.75Z" fill="#FEBC2E" stroke="black" stroke-opacity="0.2" stroke-width="0.5"></path>
+                      <path d="M46 24.75C49.1756 24.75 51.75 22.1756 51.75 19C51.75 15.8244 49.1756 13.25 46 13.25C42.8244 13.25 40.25 15.8244 40.25 19C40.25 22.1756 42.8244 24.75 46 24.75Z" fill="#28C840" stroke="black" stroke-opacity="0.2" stroke-width="0.5"></path>
+                    </svg>
+                  </div>
+                </template>
+                <div class="bg-white" :style="{ padding: px(inset) }">
+                  <img src="https://tinysnap.b-cdn.net/site/screenshot-example.jpg" alt="TinySnap example"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-1/2 sm:pl-12 my-32">
+          <div class="align-middle mb-16">
+            <h3 class="text-5xl text-slate-900 dark:text-slate-50 font-bold leading-tight mb-4">
+              Customize in your way
+            </h3>
+            <p class="text-slate-700 dark:text-slate-400 text-lg">
+              Use our magic that can turn your boring screenshots into beautiful graphics within a few clicks. Apply backgrounds, frame mockups, add shadows, and watermarks to make it impressive.
+            </p>
+          </div>
+
+          <div class="mb-4 animate-bounce">
+            <svg class="inline-block fill-slate-700 dark:fill-white" width="30" viewBox="0 0 68 77" style="padding-top: 0.75rem;">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M36.4058 21.9334L41.1332 16.3559C39.2314 17.9379 37.6704 19.8143 36.4058 21.9334ZM23.1688 30.9494C25.2167 29.029 27.1793 27.057 29.4146 25.3858C26.7801 26.6313 24.9064 28.7351 23.1688 30.9494ZM33.2576 34.8628C33.7854 35.8059 34.3218 35.3399 34.8298 34.9399C36.5485 33.5884 36.678 31.5876 36.7834 29.6735C36.8603 28.2784 36.7645 26.8185 36.0412 25.5301C35.7657 25.0387 35.412 24.7259 34.9817 25.4387C33.8074 27.3851 32.9252 29.4359 32.76 31.7319C32.6813 32.8257 32.8093 33.9015 33.2576 34.8628ZM30.044 26.4983C28.4758 27.3028 27.2555 28.5674 26.0094 29.7814C20.6252 35.0274 17.2489 41.4539 14.905 48.5197C13.3395 53.2397 12.2395 58.0626 11.3075 62.9339C11.2221 63.3783 11.1535 63.8311 10.8458 64.1895C10.4999 64.592 10.1735 64.7341 10.044 64.0384C10.0116 63.8672 10.1324 63.62 9.81447 63.6931C8.71764 63.9447 8.57833 63.1202 8.38728 62.4074C8.02827 61.0698 8.27652 59.7088 8.39131 58.3751C8.71242 54.6385 9.17526 50.9104 10.1232 47.2754C11.0034 43.9008 12.3627 40.6916 13.8111 37.5224C14.7331 35.505 15.6989 33.4657 17.2506 31.8988C18.2815 30.8578 18.8385 29.5395 19.8363 28.51C21.7493 26.5365 23.6757 24.5912 25.9913 23.0773C27.8973 21.8315 29.9825 21.148 32.2609 21.1387C33.0121 21.1359 33.5561 20.852 33.993 20.285C35.171 18.7574 36.4016 17.263 37.6421 15.7973C39.6599 13.4123 42.0469 11.3584 44.4974 9.40976C48.406 6.30179 52.5732 3.62757 57.3413 2.00582C60.1437 1.05265 62.9687 0.295021 65.9574 1.11102C66.7443 1.32581 67.4328 1.66676 67.8401 2.42598C68.016 2.75297 68.0549 3.05479 67.8179 3.37093C67.5375 3.74424 67.3526 3.49944 67.042 3.35738C64.9118 2.3824 62.9132 3.24742 60.9212 3.90867C55.4318 5.7307 50.8176 9.01166 46.4398 12.6746C43.0898 15.4778 40.0455 18.5808 37.3679 22.0365C37.1552 22.3109 36.7658 22.5228 37.3009 22.9146C39.1654 24.2792 40.116 26.2265 40.5107 28.4278C41.1203 31.8255 40.7845 35.0594 38.2512 37.6832C36.8901 39.0932 35.496 39.1912 33.7364 38.3538C29.2533 36.221 28.3904 31.6356 29.8533 27.7477C29.9848 27.3997 30.1159 27.0518 30.2468 26.7046C30.1792 26.6355 30.1114 26.567 30.044 26.4983Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7396 69.066C11.1773 70.7696 9.87903 72.6455 8.96903 74.7731C10.2258 72.8709 11.4825 70.9684 12.7396 69.066ZM4.16018 63.3217C5.28587 65.375 6.04163 67.5845 6.8814 69.7589C7.00686 70.0839 6.98214 70.5315 7.50699 70.5757C8.01112 70.618 8.14131 70.2023 8.2923 69.9013C9.11672 68.2617 10.3763 66.9558 11.4775 65.5213C12.1728 64.6148 12.7024 63.5696 13.4452 62.6601C14.5892 61.2601 15.6297 59.7727 16.6756 58.2955C17.2058 57.547 18.0634 57.0791 18.326 56.0843C18.5838 55.1085 19.3593 54.91 20.7139 55.5058C21.4054 55.8096 21.9699 56.4212 21.6002 57.3018C21.2961 58.026 20.9306 58.7392 20.4918 59.389C17.5869 63.6895 14.6474 67.9665 11.7376 72.2636C11.0844 73.228 10.4955 74.2376 9.88906 75.2334C8.78653 77.0441 7.96815 77.2015 6.16577 76.0678C4.76664 75.1877 3.99186 73.9692 3.66283 72.3613C3.02909 69.2664 2.30718 66.1894 1.09654 63.2558C0.853796 62.668 0.528696 62.1149 0.262714 61.5357C-0.0458552 60.8654 0.158774 60.5306 0.921301 60.5897C2.61148 60.7196 2.87504 60.94 4.16018 63.3217Z"></path>
+            </svg>
+            <div class="inline ml-2 text-lg text-slate-900 dark:text-slate-50">This this demo</div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="mb-4">
+              <h4 class="text-sm font-medium text-slate-900 dark:text-slate-50 mb-4">Background</h4>
+              <div class="grid grid-cols-8 gap-2">
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(0)" :style="{ background: backgrounds[0] }"></div>
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(1)" :style="{ background: backgrounds[1] }"></div>
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(2)" :style="{ background: backgrounds[2] }"></div>
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(3)" :style="{ background: backgrounds[3] }"></div>
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(4)" :style="{ background: backgrounds[4] }"></div>
+                <div class="rounded-xl w-6 h-6 cursor-pointer" @click="setBackground(5)" :style="{ background: backgrounds[5] }"></div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h4 class="text-sm font-medium text-slate-900 dark:text-slate-50 mb-4">Frame mockup</h4>
+              <div class="flex items-center justify-start">
+                <button @click="setMockupFrame" type="button" class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" :class="mockupFrame && 'bg-sky-800'" role="switch" aria-checked="false">
+                    <span class="sr-only">Frame mockup</span>
+                    <span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200" :class="mockupFrame && 'translate-x-5'"></span>
+                </button>
+            </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-50">Padding</label>
+              <input x-model="padding" type="range" min="0" x-bind:max="maxPadding" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-50">Inset</label>
+              <input x-model="inset" type="range" min="0" x-bind:max="maxInset" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-50">Border Radius</label>
+              <input x-model="borderRadius" type="range" min="0" max="80" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-50">Shadow</label>
+              <input x-model="boxShadow" type="range" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2 pr-12 text-lg my-32">
+          <h3 class="text-5xl text-slate-900 dark:text-slate-50 font-bold leading-tight mb-4">
+            Share your images
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 mb-8">
+            Save your edits to the clipboard, export to your local disk, or upload the images to TinySnap cloud and create instantly shareable links, and post them on your favorite social media website or forums.
+          </p>
+        </div>
+        <div class="w-full sm:w-1/2 p-6">
+            <img src="https://tinysnap.b-cdn.net/site/share.png" alt="Share your TinySnap images">
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  
+<section class="bg-white dark:bg-slate-900 py-20 sm:py-32" id="pricing">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="md:text-left">
+        <h2 class="font-medium text-4xl md:text-7xl tracking-tight text-slate-900 dark:text-white mb-6 md:mb-12">
+          Price
+        </h2>
+        <p class="mt-4 text-xl font-medium text-slate-700 dark:text-slate-300">
+          99% of the TinySnap features are available to all users for free and without limits.
+        </p>
+      </div>
+
+      <ul class="grid items-start grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4 mt-8">
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Unlimited screenshot takes</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Unlimited screenshot save</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Add annotation on your image</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Use 30 beautiful backgrounds</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Add device mockup frame</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Social-media ready ratios</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Custom screenshot position</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Open from file &amp; clipboard</li>
+        <li class="text-slate-900 dark:text-slate-400 text-lg"><svg class="h-6 w-6 inline mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 6.278l-11.16 12.722-6.84-6 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.278zm-22.681 5.232l6.835 6.01-1.314 1.48-6.84-6 1.319-1.49zm9.278.218l5.921-6.728 1.482 1.285-5.921 6.756-1.482-1.313z"/></svg> Turn code snippet into image</li>
+      </ul>
+
+      <div class="pricingPro mt-16">
+        <p class="mt-12 text-xl font-medium text-slate-700 dark:text-slate-300">
+          TinySnap Pro offers empowering features tailored to the advanced needs of creators, developers and marketers.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="col-span-2">
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">Cloud storage</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  Upload unlimited images to the cloud. No need to register with another service to host images.
+                </p>
+              </li>
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">Shareable links</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  Generate HTML code, markdown snippet, or direct image link to share or embed instantly anywhere on the web.
+                </p>
+              </li>
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">30-day recovery</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  No need to break a sweat when it comes to recovery. Easily recover images from the trash within 30 days.
+                </p>
+              </li>
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">Emojis</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  Hundreds of emojis are available in our annotation toolbar to help you express yourself more accurately.
+                </p>
+              </li>
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">Numbered steps</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  Add numbered steps to the image, so your customers can follow along and use your product without hassle.
+                </p>
+              </li>
+              <li class="pr-12 mb-4">
+                <h3 class="text-xl text-slate-900 dark:text-slate-200 font-bold mb-2">Priority support</h3>
+                <p class="text-slate-700 dark:text-slate-400">
+                  Let our developer team help you resolve your problems with a quick turnaround time.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <img class="h-48 mx-auto" src="https://tinysnap.b-cdn.net/site/pricing-image.webp" alt="TinySnap Pro">
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <a href="https://tinysnap.app/checkout?plan=pro">
+                <div class="px-8 py-6 bg-slate-900 text-center dark:bg-slate-800 text-slate-50 rounded-md font-medium text-sm text-left">
+                  Pay annually <br />
+                  <span class="text-4xl inline-block font-extrabold mt-3">$49</span> <br />
+                  <span class="text-sm inline-block font-base text-red-300 mt-2">✨ Save 32%</span>
+                </div>
+              </a>
+              <a href="https://tinysnap.app/checkout?plan=pro-monthly">
+                <div class="px-8 py-6 bg-stone-50 text-center dark:bg-stone-300 rounded-md font-medium text-sm text-left border border-slate-900 text-slate-900">
+                  Pay monthly <br />
+                  <span class="text-4xl inline-block font-extrabold mt-3">$6</span> <br />
+                  <span class="text-sm inline-block font-base mt-2">Get started </span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </section>
+<section id="faq" aria-labelledby="faq-title" class="relative overflow-hidden bg-white dark:bg-slate-900 py-20 sm:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-5xl">
+        <h2 id="faq-title" class="font-medium text-4xl md:text-7xl tracking-tight text-slate-900 dark:text-slate-50 mb-12">Frequently asked questions</h2>
+        <p class="mt-4 text-lg tracking-tight text-slate-700 dark:text-slate-400">Things you may want to know about TinySnap.</p>
+      </div>
+
+      <ul role="list" class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+        <li>
+          <ul role="list" class="flex flex-col gap-y-8">
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">How many screenshots can I take for free?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">You can take unlimited screenshots with TinySnap and export unlimited screenshots to local storage for free.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">Is a credit card required to subscribe TinySnap Free?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">No, all you have to do is install TinySnap, and enjoy it.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">What payment method do you support?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">We accept cards (including Mastercard, Visa, Maestro, American Express, Discover, Diners Club, JCB, UnionPay, and Mada), PayPal, Alipay, iDEAL, Google Pay (Chrome only) and wire transfers.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul role="list" class="flex flex-col gap-y-8">
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">Can I use same TinySnap Pro account on multiple devices?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">Yes, that&#x27;s OK, we don&#x27;t limit the device number.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">Is my data safe with TinySnap?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">We does not share nor has access to your data when you use TinySnap installed on premise. All data uploaded to the cloud ultize server-side encryption with AES-256 algorithm in transit.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-50">I need XYZ feature, can you add it?</h3><p class="mt-4 text-base text-slate-500 dark:text-slate-400">Hopefully yes, we always listen to our users&#x27; demand, but we can&#x27;t guarantee how soon we can implement it, you may refer to our roadmap page, and submit a feature request if the feature you want is not listed.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul role="list" class="flex flex-col gap-y-8">
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-100">Is there a discount?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">TinySnap may run promotion on holidays, or offer some discounts through our business partners, you are suggested to subscribe to our newsletter to get latest deals.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-100">Is the generated share link for the screenshot permanently valid?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">Yes, it is as long as you choose to make it public.</p>
+            </li>
+            <li>
+              <h3 class="font-semibold text-lg leading-7 text-slate-900 dark:text-slate-100">I changed my mind, can I request a refund?</h3>
+              <p class="mt-4 text-base text-slate-500 dark:text-slate-400">You have a 30-day cooling off period, meaning you can get a full refund if you change your mind within 30 days. If you change your mind after 30 days, we don’t offer refunds. But you can cancel your subscription from your Settings so it doesn’t automatically renew at the start of your next annual billing cycle. </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  </main>
+<footer class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="py-16">
+        <img class="w-36 mx-auto hidden dark:block" src="https://tinysnap.b-cdn.net/site/ts-logo-light.png" alt="TinySnap">
+        <img class="w-36 mx-auto block dark:hidden" src="https://tinysnap.b-cdn.net/site/ts-logo.png" alt="TinySnap">
+        <nav class="mt-10 text-sm" aria-label="quick links">
+          <div class="-my-1 flex justify-center gap-x-6">
+            <a
+              class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-slate-50 hover:bg-slate-100 hover:text-slate-900 dark:hover:text-slate-700"
+              href="https://tinysnap.notion.site/d2ca201febd74252ad3f1159957bb2c7?v=4f66b51fdc454bc0b1029c3277b565ce"
+              >Roadmap</a
+            >
+            <a
+              class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-slate-50 hover:bg-slate-100 hover:text-slate-900 dark:hover:text-slate-700"
+              href="https://tinysnap.app/blog"
+              >Blog</a
+            >
+            <a
+              class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-slate-50 hover:bg-slate-100 hover:text-slate-900 dark:hover:text-slate-700"
+              href="/privacy"
+              >Privacy</a
+            ><a
+              class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-slate-50 hover:bg-slate-100 hover:text-slate-900 dark:hover:text-slate-700"
+              href="/terms"
+              >Terms</a
+            >
+          </div>
+        </nav>
+      </div>
+      <div
+        class="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between"
+      >
+        <div class="flex gap-x-6">
+          <a
+            class="group"
+            aria-label="Join TinySnap Community"
+            href="https://t.me/TinySnapApp"
+            target="_blank"
+            ><svg
+              aria-hidden="true"
+              class="h-6 w-6 fill-slate-500 dark:fill-slate-300 group-hover:fill-slate-700 dark:group-hover:fill-slate-400"
+            >
+            <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg></a
+          >
+          <a
+            class="group"
+            aria-label="TinySnap on Twitter"
+            href="https://twitter.com/TinySnapApp"
+            target="_blank"
+            ><svg
+              aria-hidden="true"
+              class="h-6 w-6 fill-slate-500 dark:fill-slate-300 group-hover:fill-slate-700 dark:group-hover:fill-slate-400"
+            >
+              <path
+                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0 0 22 5.92a8.19 8.19 0 0 1-2.357.646 4.118 4.118 0 0 0 1.804-2.27 8.224 8.224 0 0 1-2.605.996 4.107 4.107 0 0 0-6.993 3.743 11.65 11.65 0 0 1-8.457-4.287 4.106 4.106 0 0 0 1.27 5.477A4.073 4.073 0 0 1 2.8 9.713v.052a4.105 4.105 0 0 0 3.292 4.022 4.093 4.093 0 0 1-1.853.07 4.108 4.108 0 0 0 3.834 2.85A8.233 8.233 0 0 1 2 18.407a11.615 11.615 0 0 0 6.29 1.84"
+              ></path></svg></a
+          ><a
+            class="group"
+            aria-label="TinySnap on Facebook"
+            href="https://facebook.com/TinySnapApp"
+            target="_blank"
+            ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 504 504" class="h-6 w-6 fill-slate-500 dark:fill-slate-300 group-hover:fill-slate-700 dark:group-hover:fill-slate-400" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M377.6,0H126C56.8,0,0,56.8,0,126.4V378c0,69.2,56.8,126,126,126h251.6c69.6,0,126.4-56.8,126.4-126.4V126.4    C504,56.8,447.2,0,377.6,0z M319.6,252H272v156h-60V252h-32v-64h28v-27.2c0-25.6,12.8-66,66.8-66H324V148h-34.8    c-5.6,0-13.2,3.6-13.2,16v24h49.2L319.6,252z"/>
+                </g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              </svg></a>
+              <a
+            class="group"
+            aria-label="TinySnap on Instagram"
+            href="https://www.instagram.com/tinysnap.app/"
+            target="_blank"
+            ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 300 300" class="h-6 w-6 fill-slate-500 dark:fill-slate-300 group-hover:fill-slate-700 dark:group-hover:fill-slate-400" xml:space="preserve">
+              <g id="XMLID_504_">
+                <path id="XMLID_505_" d="M38.52,0.012h222.978C282.682,0.012,300,17.336,300,38.52v222.978c0,21.178-17.318,38.49-38.502,38.49   H38.52c-21.184,0-38.52-17.313-38.52-38.49V38.52C0,17.336,17.336,0.012,38.52,0.012z M218.546,33.329   c-7.438,0-13.505,6.091-13.505,13.525v32.314c0,7.437,6.067,13.514,13.505,13.514h33.903c7.426,0,13.506-6.077,13.506-13.514   V46.854c0-7.434-6.08-13.525-13.506-13.525H218.546z M266.084,126.868h-26.396c2.503,8.175,3.86,16.796,3.86,25.759   c0,49.882-41.766,90.34-93.266,90.34c-51.487,0-93.254-40.458-93.254-90.34c0-8.963,1.37-17.584,3.861-25.759H33.35v126.732   c0,6.563,5.359,11.902,11.916,11.902h208.907c6.563,0,11.911-5.339,11.911-11.902V126.868z M150.283,90.978   c-33.26,0-60.24,26.128-60.24,58.388c0,32.227,26.98,58.375,60.24,58.375c33.278,0,60.259-26.148,60.259-58.375   C210.542,117.105,183.561,90.978,150.283,90.978z"/>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              </svg></a
+          >
+        </div>
+        <p class="mt-6 text-sm text-slate-700 dark:text-slate-400 sm:mt-0">
+          Copyright ©
+          <!-- -->2022<!-- -->
+          TinySnap. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+
+</body>
+
+<!-- Google tag (gtag.js) -->
+<script defer data-domain="tinysnap.app" src="https://analytics.heyform.net/js/plausible.js"></script>
+</html>
